@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="dark" />
-    <title>MetaSift — Live Sandbox</title>
-    <meta name="description" content="MetaSift is an AI-powered metadata analyst and steward for OpenMetadata. The live sandbox is coming soon — watch the demo or try it locally now." />
+    <title>MetaSift — Sandbox temporarily offline</title>
+    <meta name="description" content="The MetaSift live sandbox is temporarily offline. Watch the demo, run it locally in five minutes, or open it in Codespaces." />
 
-    <meta property="og:title" content="MetaSift — Live Sandbox" />
-    <meta property="og:description" content="AI-powered metadata analyst and steward for OpenMetadata. Live sandbox coming soon." />
+    <meta property="og:title" content="MetaSift — Sandbox temporarily offline" />
+    <meta property="og:description" content="The live sandbox is offline — run MetaSift locally or watch the demo while it's down." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://sandbox.metasift.org" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -143,6 +143,14 @@
             border-radius: 50%;
             animation: pulse-dot 2s ease-in-out infinite;
         }
+        .badge-offline {
+            background: rgba(245, 158, 11, 0.1);
+            border-color: rgba(245, 158, 11, 0.3);
+            color: #fbbf24;
+        }
+        .badge-offline .pulse-dot {
+            background: var(--warn);
+        }
         @keyframes pulse-dot {
             0%, 100% { opacity: 1; transform: scale(1); }
             50% { opacity: 0.6; transform: scale(1.3); }
@@ -214,92 +222,6 @@
         .btn svg {
             width: 16px;
             height: 16px;
-        }
-
-        /* ---------- Countdown ---------- */
-        .countdown-card {
-            margin: 56px auto 0;
-            max-width: 720px;
-            background: var(--panel);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 28px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .countdown-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse 70% 80% at 50% 0%, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .countdown-label {
-            font-size: 12px;
-            font-family: 'JetBrains Mono', ui-monospace, monospace;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--accent-soft);
-            margin-bottom: 18px;
-            position: relative;
-        }
-        .countdown-grid {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 14px;
-            position: relative;
-        }
-        .countdown-block {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-width: 76px;
-            padding: 14px 8px;
-            background: rgba(2, 6, 23, 0.5);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-        }
-        .countdown-value {
-            font-family: 'JetBrains Mono', ui-monospace, monospace;
-            font-size: 38px;
-            font-weight: 600;
-            line-height: 1;
-            color: var(--accent-bright);
-            font-variant-numeric: tabular-nums;
-        }
-        .countdown-unit {
-            font-size: 11px;
-            font-family: 'JetBrains Mono', ui-monospace, monospace;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: var(--dim);
-            margin-top: 8px;
-        }
-        .countdown-sep {
-            font-family: 'JetBrains Mono', ui-monospace, monospace;
-            font-size: 32px;
-            color: var(--mid);
-            line-height: 1;
-            padding-top: 18px;
-        }
-        .countdown-card.is-live .countdown-value {
-            color: var(--accent-bright);
-        }
-        .countdown-live {
-            display: none;
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--accent-bright);
-            padding: 18px 0 6px;
-        }
-        .countdown-card.is-live .countdown-grid { display: none; }
-        .countdown-card.is-live .countdown-live { display: block; }
-        @media (max-width: 520px) {
-            .countdown-block { min-width: 60px; padding: 10px 6px; }
-            .countdown-value { font-size: 28px; }
-            .countdown-sep { font-size: 24px; padding-top: 12px; }
         }
 
         /* ---------- Sandbox status card ---------- */
@@ -480,14 +402,15 @@
     <main>
         <div class="container">
             <section class="hero" style="border-top: none;">
-                <div class="badge">
+                <div class="badge badge-offline">
                     <span class="pulse-dot"></span>
-                    Live sandbox · coming soon
+                    Live sandbox · temporarily offline
                 </div>
-                <h1>Try MetaSift <span class="accent">in your browser</span><br />without standing up Docker.</h1>
+                <h1>The live sandbox is offline.<br /><span class="accent">Run it locally</span> in five minutes.</h1>
                 <p class="lead">
-                    The live, public sandbox at <strong>sandbox.metasift.org</strong> is being built.
-                    For now, watch the demo or run it locally — both take less than 5 minutes.
+                    The hosted sandbox at <strong>sandbox.metasift.org</strong> is temporarily down — likely
+                    for maintenance, a scheduled reset, or to keep costs in check. While it's offline, watch the
+                    demo or run the full stack on your machine.
                 </p>
                 <div class="cta-row">
                     <a href="https://youtu.be/-8sh1UNwvKI" class="btn btn-primary" target="_blank" rel="noopener">
@@ -504,30 +427,6 @@
                     </a>
                 </div>
 
-                <div class="countdown-card" id="countdown" data-target="2026-04-27T14:10:00Z">
-                    <div class="countdown-label">
-                        <span class="pulse-dot" style="display: inline-block; vertical-align: middle; margin-right: 8px;"></span>
-                        Sandbox goes live in
-                    </div>
-                    <div class="countdown-grid">
-                        <div class="countdown-block">
-                            <div class="countdown-value" id="cd-hours">--</div>
-                            <div class="countdown-unit">hours</div>
-                        </div>
-                        <div class="countdown-sep">:</div>
-                        <div class="countdown-block">
-                            <div class="countdown-value" id="cd-minutes">--</div>
-                            <div class="countdown-unit">minutes</div>
-                        </div>
-                        <div class="countdown-sep">:</div>
-                        <div class="countdown-block">
-                            <div class="countdown-value" id="cd-seconds">--</div>
-                            <div class="countdown-unit">seconds</div>
-                        </div>
-                    </div>
-                    <div class="countdown-live">Sandbox is live — refresh the page.</div>
-                </div>
-
                 <div class="status-card">
                     <div class="status-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -536,13 +435,13 @@
                         </svg>
                     </div>
                     <div>
-                        <div class="status-title">Why is the live sandbox not up yet?</div>
+                        <div class="status-title">What happened?</div>
                         <div class="status-body">
-                            MetaSift runs a full OpenMetadata stack (server + MySQL + Elasticsearch) plus the FastAPI
-                            backend, the React SPA, and a daily reset job. We're hardening the deploy — rate-limiting,
-                            BYO-key gating, read-only mode — before exposing it publicly. Subscribe to
-                            <a href="https://github.com/blueberrylinux/metasift" target="_blank" rel="noopener">the repo</a>
-                            for the launch.
+                            The sandbox runs a full OpenMetadata stack (server + MySQL + Elasticsearch) plus the
+                            FastAPI backend, the React SPA, and a daily reset job. It may be down for a scheduled
+                            reset, maintenance, or to keep hosting costs sane. Try again in a few minutes, or
+                            <a href="https://github.com/blueberrylinux/metasift" target="_blank" rel="noopener">check the repo</a>
+                            for status.
                         </div>
                     </div>
                 </div>
@@ -637,37 +536,5 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        (function () {
-            var card = document.getElementById('countdown');
-            if (!card) return;
-            var target = new Date(card.getAttribute('data-target')).getTime();
-            var hEl = document.getElementById('cd-hours');
-            var mEl = document.getElementById('cd-minutes');
-            var sEl = document.getElementById('cd-seconds');
-            var pad = function (n) { return n < 10 ? '0' + n : '' + n; };
-            var tick = function () {
-                var diff = target - Date.now();
-                if (diff <= 0) {
-                    card.classList.add('is-live');
-                    return false;
-                }
-                var totalSeconds = Math.floor(diff / 1000);
-                var h = Math.floor(totalSeconds / 3600);
-                var m = Math.floor((totalSeconds % 3600) / 60);
-                var s = totalSeconds % 60;
-                hEl.textContent = pad(h);
-                mEl.textContent = pad(m);
-                sEl.textContent = pad(s);
-                return true;
-            };
-            if (tick()) {
-                var id = setInterval(function () {
-                    if (!tick()) clearInterval(id);
-                }, 1000);
-            }
-        })();
-    </script>
 </body>
 </html>
